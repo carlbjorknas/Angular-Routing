@@ -21,8 +21,12 @@ export class ProductEditComponent implements OnInit {
                 private router: ActivatedRoute) { }
 
     ngOnInit(){
-        let id = +this.router.snapshot.params['id']
-        this.getProduct(id)
+        this.router.params.subscribe(
+            params => {
+                let id = +params['id']
+                this.getProduct(id)
+            }
+        )
     }
 
     getProduct(id: number): void {
